@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      overflow: hidden;
+    }
+    ul {
+      list-style-type: none;
+    }
+  </style>
+</head>
+<body>
+  <aside id="move-btn">
+    <h1>move!</h1>
+  </aside>
+  <div id="root">
+    <main>
+      <section id="left-sect">
+        <ul>
+          <li>items-1</li>
+          <li>items-2</li>
+          <li>items-3</li>
+          <li>items-4</li>
+          <li>items-5</li>
+        </ul>
+      </section>
+
+      <section id="right-sect">
+        <ul></ul>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const moveBtn = document.getElementById('move-btn');
+    const root = document.getElementById('root');
+    const leftSect = document.getElementById('left-sect');
+    const rightSect = document.getElementById('right-sect');
+    // moveBtn styling
+    moveBtn.style.width = "200px";
+    moveBtn.style.height = "200px";
+    moveBtn.style.backgroundColor = "#fff";
+    moveBtn.style.borderRadius = "50%";
+    moveBtn.style.position = "fixed";
+    moveBtn.style.bottom = "10px";
+    moveBtn.style.left = "50vw";
+    moveBtn.style.transform = "translate(-50%, 0)";
+    // flex set
+    moveBtn.style.display = "flex";
+    moveBtn.style.justifyContent = "center";
+    moveBtn.style.alignItems = "center";
+
+    // root styling
+    root.style.width = "100vw";
+    root.style.height = "100vh";
+    root.style.backgroundColor = "cadetblue";
+    // flex set
+    root.style.display = "flex";
+    root.style.justifyContent = "center";
+    root.style.alignItems = "center";
+
+    console.dir(root);
+    
+    root.children[0].style.width = "500px";
+    root.children[0].style.height = "500px";
+    root.children[0].style.border = "1px dotted black";
+    // flex set
+    root.children[0].style.display = "flex";
+    root.children[0].style.justifyContent = "center";
+    root.children[0].style.alignItems = "center";
+
+    // root main section
+    root.children[0].children[0].style.display = "flex";
+    root.children[0].children[0].style.justifyContent = "center";
+    root.children[0].children[0].style.alignItems = "center";
+
+    root.children[0].children[1].style.display = "flex";
+    root.children[0].children[1].style.justifyContent = "center";
+    root.children[0].children[1].style.alignItems = "center";
+
+    // root main section ul li
+    for(let i = 0; i < leftSect.children[0].children.length; i++) {
+      leftSect.children[0].children[i].style.width = "100%";
+      leftSect.children[0].children[i].style.height = "50px";
+      leftSect.children[0].children[i].style.backgroundColor = "#fff";
+      leftSect.children[0].children[i].style.border = "1px solid black";
+    }
+    // leftSect styling
+    leftSect.style.width = "200px";
+    leftSect.style.height = "450px";
+    leftSect.style.border = "1px solid black";
+    // rightSect styling
+    rightSect.style.width = "200px";
+    rightSect.style.height = "450px";
+    rightSect.style.border = "1px";
+
+  </script>
+</body>
+</html>
