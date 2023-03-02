@@ -20,25 +20,14 @@
     }
   </style>
 </head>
+
 <body>
-  <aside id="move-btn">
-    <h1>move!</h1>
-  </aside>
+
+  <aside id="move-btn"></aside>
   <div id="root">
     <main>
-      <section id="left-sect">
-        <ul>
-          <li>items-1</li>
-          <li>items-2</li>
-          <li>items-3</li>
-          <li>items-4</li>
-          <li>items-5</li>
-        </ul>
-      </section>
-
-      <section id="right-sect">
-        <ul></ul>
-      </section>
+      <section id="left-sect"></section>
+      <section id="right-sect"></section>
     </main>
   </div>
 
@@ -58,6 +47,45 @@
     const bottom = ["10px"];
     const left = ["50vw"];
     const transform = ["translate(-50%, 0)"];
+
+    // function asideMaker(element, id, textContent, attributeName, attributeValue) {
+    //   const asideTag = document.createElement(element);
+    //   asideTag.textContent = textContent;
+    //   asideTag.setAttribute(attributeName, attributeValue);
+    //   id.appendChild(asideTag);
+    // };
+    // asideMaker('aside', document.body, "", 'id', 'move-btn');
+
+    // h1 tag 생성 함수
+    function h1TagMaker(element, parent, textContent) {
+      const h1Tag = document.createElement(element);
+      h1Tag.textContent = textContent;
+      parent.appendChild(h1Tag);
+    };
+    // h1 tag 생성 함수 호출
+    h1TagMaker('h1', moveBtn, "hello!");
+
+    // ul tag 생성 함수
+    function ulMaker(element, parent) {
+      const ulTag = document.createElement(element);
+      parent.appendChild(ulTag);
+    };
+    // ul tag 생성 함수 호출
+    ulMaker('ul', leftSect);
+    ulMaker('ul', rightSect);
+
+    // li tag 생성 함수
+    function liMaker(element, parent, textContent) {
+      const liTag = document.createElement(element);
+      liTag.textContent = textContent;
+      parent.children[0].appendChild(liTag);
+    };
+    // li tag 생성 함수 반복 호출
+    for(let i = 1; i < 6; i++) {
+      liMaker('li', leftSect, 'items-' + i);
+    }
+    
+
 
     // style function
     // 함수 호출 시 사용하지 않는 매개변수는 "" 처리
@@ -102,9 +130,6 @@
     StyleSet(leftSect, width[1], height[3], "", "", borderStyle[0]);
     // rightSect styling
     StyleSet(rightSect, width[1], height[3], "", "", borderStyle[1]);
-
-    console.dir(leftSect.children[0].children[0]);
-    console.dir(document.body);
   </script>
 </body>
 </html>
