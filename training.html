@@ -46,63 +46,111 @@
     const root = document.getElementById('root');
     const leftSect = document.getElementById('left-sect');
     const rightSect = document.getElementById('right-sect');
-    // moveBtn styling
-    moveBtn.style.width = "200px";
-    moveBtn.style.height = "200px";
-    moveBtn.style.backgroundColor = "#fff";
-    moveBtn.style.borderRadius = "50%";
-    moveBtn.style.position = "fixed";
-    moveBtn.style.bottom = "10px";
-    moveBtn.style.left = "50vw";
-    moveBtn.style.transform = "translate(-50%, 0)";
-    // flex set
-    moveBtn.style.display = "flex";
-    moveBtn.style.justifyContent = "center";
-    moveBtn.style.alignItems = "center";
+    
+    const width = ["100vw", "200px", "500px", "100%"];
+    const height = ["100vh", "50px", "200px", "450px", "500px"];
+    const bgColor = ["#fff", "cadetblue"];
+    const flexStyle = ["flex", "center", "center"];
+    const borderStyle = ["1px solid black", "1px solid blue", "1px dotted black"];
+    const borderRaidus = ["50%"];
+    const position = ["fixed"];
+    const bottom = ["10px"];
+    const left = ["50vw"];
+    const transform = ["translate(-50%, 0)"];
 
-    // root styling
-    root.style.width = "100vw";
-    root.style.height = "100vh";
-    root.style.backgroundColor = "cadetblue";
+    // moveBtn styling
+
+    // style function
+    // 함수 호출 시 사용하지 않는 매개변수는 "" 처리
+    function StyleSet(id, width, height, bgColor, borderRadi, border, position, bottom, left, transform) {
+      id.style.width = width;
+      id.style.height = height;
+      id.style.backgroundColor = bgColor;
+      id.style.borderRadius = borderRadi;
+      id.style.border = border;
+      id.style.position = position;
+      id.style.bottom = bottom;
+      id.style.left = left;
+      id.style.transform = transform;
+    };
+    StyleSet(moveBtn, width[1], height[2], bgColor[0], borderRaidus[0], "", position[0], bottom[0], left[0], transform[0]);
+    // flex function
+    function flexSt(id, display, justifyContent, alignItems) {
+      id.style.display = display;
+      id.style.justifyContent = justifyContent;
+      id.style.alignItems = alignItems;
+    };
+    flexSt(moveBtn, flexStyle[0], flexStyle[1], flexStyle[2]);
+
+    // moveBtn.style.width = "200px";
+    // moveBtn.style.height = "200px";
+    // moveBtn.style.backgroundColor = "#fff";
+    // moveBtn.style.borderRadius = "50%";
+    // moveBtn.style.position = "fixed";
+    // moveBtn.style.bottom = "10px";
+    // moveBtn.style.left = "50vw";
+    // moveBtn.style.transform = "translate(-50%, 0)";
     // flex set
-    root.style.display = "flex";
-    root.style.justifyContent = "center";
-    root.style.alignItems = "center";
+    // moveBtn.style.display = "flex";
+    // moveBtn.style.justifyContent = "center";
+    // moveBtn.style.alignItems = "center";
+    
+    StyleSet(root, width[0], height[0], bgColor[1]);
+    // rootSt(root, width[0], height[0], bgColor[1]);
+    // root styling
+    // root.style.width = "100vw";
+    // root.style.height = "100vh";
+    // root.style.backgroundColor = "cadetblue";
+    // flex set
+    flexSt(root, flexStyle[0], flexStyle[1], flexStyle[2]);
+    // root.style.display = "flex";
+    // root.style.justifyContent = "center";
+    // root.style.alignItems = "center";
 
     console.dir(root);
-    
-    root.children[0].style.width = "500px";
-    root.children[0].style.height = "500px";
-    root.children[0].style.border = "1px dotted black";
+    StyleSet(root.children[0], width[2], height[4], "", "", borderStyle[2]);
+    // root.children[0].style.width = "500px";
+    // root.children[0].style.height = "500px";
+    // root.children[0].style.border = "1px dotted black";
     // flex set
-    root.children[0].style.display = "flex";
-    root.children[0].style.justifyContent = "center";
-    root.children[0].style.alignItems = "center";
+    flexSt(root.children[0], flexStyle[0], flexStyle[1], flexStyle[2]);
+    // root.children[0].style.display = "flex";
+    // root.children[0].style.justifyContent = "center";
+    // root.children[0].style.alignItems = "center";
 
     // root main section
-    root.children[0].children[0].style.display = "flex";
-    root.children[0].children[0].style.justifyContent = "center";
-    root.children[0].children[0].style.alignItems = "center";
-
-    root.children[0].children[1].style.display = "flex";
-    root.children[0].children[1].style.justifyContent = "center";
-    root.children[0].children[1].style.alignItems = "center";
+    // flex set
+    flexSt(root.children[0].children[0], flexStyle[0], flexStyle[1], flexStyle[2]);
+    // root.children[0].children[0].style.display = "flex";
+    // root.children[0].children[0].style.justifyContent = "center";
+    // root.children[0].children[0].style.alignItems = "center";
+    flexSt(root.children[0].children[1], flexStyle[0], flexStyle[1], flexStyle[2]);
+    // root.children[0].children[1].style.display = "flex";
+    // root.children[0].children[1].style.justifyContent = "center";
+    // root.children[0].children[1].style.alignItems = "center";
 
     // root main section ul li
     for(let i = 0; i < leftSect.children[0].children.length; i++) {
-      leftSect.children[0].children[i].style.width = "100%";
-      leftSect.children[0].children[i].style.height = "50px";
-      leftSect.children[0].children[i].style.backgroundColor = "#fff";
-      leftSect.children[0].children[i].style.border = "1px solid black";
+      StyleSet(leftSect.children[0].children[i], width[3], height[1], bgColor[0], "", borderStyle[0]);
     }
+    
+    // for(let i = 0; i < leftSect.children[0].children.length; i++) {
+    //   leftSect.children[0].children[i].style.width = "100%";
+    //   leftSect.children[0].children[i].style.height = "50px";
+    //   leftSect.children[0].children[i].style.backgroundColor = "#fff";
+    //   leftSect.children[0].children[i].style.border = "1px solid black";
+    // }
     // leftSect styling
-    leftSect.style.width = "200px";
-    leftSect.style.height = "450px";
-    leftSect.style.border = "1px solid black";
+    StyleSet(leftSect, width[1], height[3], "", "", borderStyle[0]);
+    // leftSect.style.width = "200px";
+    // leftSect.style.height = "450px";
+    // leftSect.style.border = "1px solid black";
+
     // rightSect styling
-    rightSect.style.width = "200px";
-    rightSect.style.height = "450px";
-    rightSect.style.border = "1px";
+    StyleSet(rightSect, width[1], height[3], "", "", borderStyle[1]);
+    // rightSect.style.width = "200px";
+    // rightSect.style.height = "450px";
+    // rightSect.style.border = "1px solid blue";
 
   </script>
 </body>
