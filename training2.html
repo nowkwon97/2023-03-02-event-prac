@@ -23,20 +23,37 @@
 
 <body>
 
-  <aside id="move-btn"></aside>
   <div id="root">
     <main>
       <section id="left-sect"></section>
       <section id="right-sect"></section>
     </main>
   </div>
-
+  <!-- ! **생각할 부분** -->
+  <!-- ! *스타일에 얽매이지 말고 항상 구조부터 보자(만들자). -->
+  <!-- ! *배열에 값을 담는 것보다 객체에 값을 담고 키를 참조하는 것이 더 깔끔할 거 같다. -->
+  <!-- ! *for loop, for in loop를 활용해서 작성하는 방법을 생각해보자. -->
+  <!-- ! *태그를 만드는 함수를 여러 개 만들지 말고 하나의 함수를 활용해서 여러 가지를 만들 수 있도록 생각해보자.(함수의 재활용성을 높여보자) -->
+  <!-- ! *함수, 반복문, 조건문으로 사골을 만들자. -->
   <script>
+    // 구조 생성해주는 함수를 뒤에 만들다보니 스타일 함수가 꼬임
+    // 항상 구조 먼저 생성하자.
+
+    // aside tag 생성 함수
+    function asideTagMaker(element, parent, textContent, attributeName, attributeValue) {
+      const asideTag = document.createElement(element);
+      asideTag.textContent = textContent;
+      asideTag.setAttribute(attributeName, attributeValue);
+      parent.appendChild(asideTag);
+    };
+    // aside tag 생성 함수 호출
+    asideTagMaker('aside', document.body, "", 'id', 'move-btn');
+
     const moveBtn = document.getElementById('move-btn');
     const root = document.getElementById('root');
     const leftSect = document.getElementById('left-sect');
     const rightSect = document.getElementById('right-sect');
-    // 배열이 아닌 객체로 값을 담고 키를 참조해서 보는 것이 함수를 해석하는데 더 유리할 거 같다.
+    // 배열이 아닌 객체로 값을 담고 키를 참조해서 보는 것이 함수를 보고 해석하는데 더 유리할 거 같다.
     const width = ["100vw", "200px", "500px", "100%"];
     const height = ["100vh", "50px", "200px", "450px", "500px"];
     const bgColor = ["#fff", "cadetblue"];
@@ -47,14 +64,6 @@
     const bottom = ["10px"];
     const left = ["50vw"];
     const transform = ["translate(-50%, 0)"];
-
-    // function asideMaker(element, id, textContent, attributeName, attributeValue) {
-    //   const asideTag = document.createElement(element);
-    //   asideTag.textContent = textContent;
-    //   asideTag.setAttribute(attributeName, attributeValue);
-    //   id.appendChild(asideTag);
-    // };
-    // asideMaker('aside', document.body, "", 'id', 'move-btn');
 
     // h1 tag 생성 함수
     function h1TagMaker(element, parent, textContent) {
@@ -75,6 +84,7 @@
     ulMaker('ul', rightSect);
 
     // li tag 생성 함수
+    // ul 생성 함수 다음에 써주도록 하자.
     function liMaker(element, parent, textContent) {
       const liTag = document.createElement(element);
       liTag.textContent = textContent;
